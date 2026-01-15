@@ -1,12 +1,12 @@
-import { Slide, BulletList, StatsGrid, Quote } from '../components/Slider'
 import {
-  Rocket,
-  Code,
   Bug,
+  Code,
   FileText,
+  Rocket,
   Users,
   Zap
 } from 'lucide-react'
+import { BulletList, Quote, Slide, StatsGrid } from '../components/Slider'
 
 export function RealWorldSlide1() {
   return (
@@ -104,18 +104,9 @@ export function ThankYouSlide() {
   return (
     <Slide
       icon={Rocket}
-      subtitle="Thank You!"
-      title="Q&A Time"
-      description="Cảm ơn bạn đã theo dõi. Hãy đặt câu hỏi nếu có!"
+      subtitle="Thank You for Listening!"
+      title="Thank You!"
     >
-      <div className="mt-8 text-center">
-        <p className="text-white/60">
-          Nhấn <kbd className="px-2 py-1 bg-white/10 rounded">Esc</kbd> để thoát presentation mode
-        </p>
-        <p className="text-white/60 mt-2">
-          Sử dụng <kbd className="px-2 py-1 bg-white/10 rounded">←</kbd> <kbd className="px-2 py-1 bg-white/10 rounded">→</kbd> để xem lại các slides
-        </p>
-      </div>
     </Slide>
   )
 }

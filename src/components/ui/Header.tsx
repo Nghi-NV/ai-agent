@@ -8,10 +8,6 @@ export function Header() {
           <Sparkles className="w-6 h-6 text-primary" />
           <span className="font-bold text-lg">AI Knowledge Share</span>
         </div>
-
-        <div className="flex items-center gap-6 text-sm">
-          <span className="text-text-secondary">Nhấn <kbd className="px-2 py-1 bg-white/10 rounded">P</kbd> để vào chế độ trình chiếu</span>
-        </div>
       </nav>
     </header>
   )

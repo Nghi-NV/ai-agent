@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { LucideIcon, CheckCircle, FileCode } from 'lucide-react'
+import { CheckCircle, FileCode, LucideIcon } from 'lucide-react'
 
 // ========== BulletList ==========
 
@@ -148,7 +148,7 @@ export function CodeBlock({ code, filename }: CodeBlockProps) {
         </div>
       )}
       <pre className="p-3 lg:p-4 overflow-x-auto">
-        <code className="text-xs lg:text-sm font-mono text-accent whitespace-pre-wrap break-words">{code}</code>
+        <code className="text-xs lg:text-sm font-mono text-accent whitespace-pre-wrap wrap-break-word">{code}</code>
       </pre>
     </div>
   )

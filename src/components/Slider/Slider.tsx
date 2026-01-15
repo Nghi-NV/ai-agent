@@ -1,7 +1,7 @@
-import { useState, useEffect, useCallback, ReactNode } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import { Play } from 'lucide-react'
-import { useFullscreen, useKeyboard } from '../../hooks'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
+import { useKeyboard } from '../../hooks'
 
 interface SliderProps {
   children: ReactNode[]
@@ -18,7 +18,6 @@ export function Slider({
 }: SliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPresenting, setIsPresenting] = useState(false)
-  const { toggleFullscreen, isFullscreen } = useFullscreen()
 
   const totalSlides = children.length
 
@@ -63,24 +62,13 @@ export function Slider({
   // ========== LANDING PAGE MODE ==========
   if (!isPresenting) {
     return (
-      <div className={`relative min-h-screen ${className} overflow-x-hidden`}>
+      <div className={`relative ${className} overflow-x-hidden overflow-y-auto`}>
         {/* Background gradient orbs */}
-        <div className="fixed inset-0 overflow-hidden -z-10">
-          <motion.div
-            className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl"
-            animate={{ x: [0, 20, 0], y: [0, -20, 0] }}
-            transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/30 rounded-full blur-3xl"
-            animate={{ x: [0, -20, 0], y: [0, 20, 0] }}
-            transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-          />
-          <motion.div
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/20 rounded-full blur-3xl"
-            animate={{ scale: [1, 1.1, 1] }}
-            transition={{ duration: 12, repeat: Infinity, ease: 'easeInOut' }}
-          />
+        {/* Static background for better scroll performance */}
+        <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/30 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
         </div>
 
         {/* Landing Content - Layout fixed for scrolling */}
@@ -143,7 +131,7 @@ export function Slider({
                            text-lg cursor-pointer hover:scale-105"
               >
                 <Play className="w-5 h-5" />
-                Bắt đầu buổi chia sẻ
+                Bắt đầu
               </button>
             </motion.div>
 
@@ -152,7 +140,7 @@ export function Slider({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="mt-24 text-left max-w-3xl mx-auto pb-20"
+              className="mt-24 text-left max-w-3xl mx-auto"
             >
               <h3 className="text-2xl font-bold mb-8 text-center bg-white/10 py-3 rounded-lg">Nội Dung Chương Trình</h3>
               <div className="space-y-6">
@@ -179,6 +167,18 @@ export function Slider({
               </div>
             </motion.div>
           </motion.div>
+        </div>
+
+        {/* All Slides Content - Scrollable with optimized rendering */}
+        <div className="w-full">
+          {children.map((child, index) => (
+            <section
+              key={index}
+              className="min-h-screen w-full py-8 transform-gpu"
+            >
+              {child}
+            </section>
+          ))}
         </div>
       </div>
     )
@@ -221,9 +221,6 @@ export function Slider({
           </motion.div>
         </AnimatePresence>
       </div>
-
-      {/* NO CONTROLS OR INDICATORS AS REQUESTED */}
-      {/* Navigation is handled purely by keyboard (Arrow keys, Space, etc.) or auto-play */}
     </div>
   )
 }
