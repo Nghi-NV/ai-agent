@@ -1,0 +1,8 @@
+export { HeroSlide } from './HeroSlide'
+export { PromptEngineeringSlide, PromptMistakesSlide, PromptBestPracticesSlide } from './PromptSlides'
+export { AIToolsSlide, AIToolsSlide2, AIToolsComparisonSlide } from './AIToolsSlides'
+export { UsingAIEffectivelySlide, SkillsRulesWorkflowSlide, ChoosingModeSlide } from './UsingAISlides'
+export { TipsTricksSlide1, TipsTricksSlide2, TipsTricksSlide3 } from './TipsSlides'
+export { BMADMethodSlide, SpecKitSlide, SpecKitWorkflowSlide, BMADvsSpecKitSlide } from './MethodologySlides'
+export { DevProcessSlide, AIinTestingSlide, AIinDocumentationSlide } from './DevProcessSlides'
+export { RealWorldSlide1, RealWorldSlide2, SummarySlide, ThankYouSlide } from './RealWorldSlides'
