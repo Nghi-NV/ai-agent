@@ -103,7 +103,7 @@ export function Slider({
               transition={{ delay: 0.4 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight"
             >
-              <span className="gradient-text">Sử Dụng AI Hiệu Quả</span>
+              <span className="gradient-text">Sử Dụng AI</span>
               <br />
               <span className="text-white/80">Trong Công Việc</span>
             </motion.h1>
@@ -114,7 +114,7 @@ export function Slider({
               transition={{ delay: 0.5 }}
               className="text-lg md:text-xl text-white/60 mb-12 max-w-2xl mx-auto"
             >
-              Hướng dẫn toàn diện về Prompt Engineering, AI Tools, BMAD Method,
+              Hướng dẫn toàn diện về Prompt Engineering, AI Tools,
               và cách áp dụng AI vào quy trình phát triển phần mềm (SDLC).
             </motion.p>
 
@@ -145,14 +145,13 @@ export function Slider({
               <h3 className="text-2xl font-bold mb-8 text-center bg-white/10 py-3 rounded-lg">Nội Dung Chương Trình</h3>
               <div className="space-y-6">
                 {[
-                  { title: 'Intro', desc: 'Tầm quan trọng của AI trong bối cảnh công nghệ 2026' },
-                  { title: 'Prompt Engineering', desc: 'Kỹ thuật viết prompt tối ưu & các lỗi thường gặp' },
-                  { title: 'AI Tools Arsenal', desc: 'So sánh & ứng dụng: Cursor, Claude, Gemini, Copilot' },
-                  { title: 'Effective Usage', desc: 'Chiến lược Planning Mode vs Fast Mode & Cấu hình' },
-                  { title: 'Tips & Tricks', desc: 'Mẹo thực chiến & Best practices từ Senior Developers' },
-                  { title: 'Methodologies', desc: 'Quy trình BMAD & GitHub Spec Kit Workflow' },
-                  { title: 'Dev Process', desc: 'Ứng dụng AI trong Testing, QA và Tự động hóa tài liệu' },
-                  { title: 'Real World', desc: 'Case studies thực tế & Số liệu hiệu quả' }
+                  { title: 'Viết Prompt Hiệu Quả', desc: 'Cách viết prompt để AI hiểu đúng ý bạn' },
+                  { title: 'Công Cụ AI', desc: 'ChatGPT, Claude, Gemini, Cursor, Antigravity' },
+                  { title: 'Skills & Workflows', desc: 'Tính năng mới trong IDE giúp AI hiểu project' },
+                  { title: 'Mẹo & Lỗi Hay Gặp', desc: 'Kinh nghiệm từ thực tế' },
+                  { title: 'BMAD & Spec Kit', desc: 'Phương pháp làm việc với AI agents' },
+                  { title: 'Ví Dụ Thực Tế', desc: 'Lumi Tester, Android Mirror và các dự án khác' },
+                  { title: 'Hỏi Đáp', desc: 'Trao đổi, thảo luận' }
                 ].map((item, i) => (
                   <div key={i} className="flex gap-4 p-4 bg-white/5 rounded-xl border border-white/5 hover:border-primary/50 transition-colors">
                     <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0">

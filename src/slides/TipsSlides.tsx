@@ -1,43 +1,25 @@
-import { Slide, BulletList, StepList } from '../components/Slider'
-import {
-  Lightbulb,
-  Target,
-  RefreshCw,
-  CheckCircle,
-  Zap,
-  Brain,
-  Users,
-  FileText
-} from 'lucide-react'
+import { AlertTriangle, Lightbulb } from 'lucide-react'
+import { BulletList, Slide, StepList } from '../components/Slider'
 
 export function TipsTricksSlide1() {
   return (
     <Slide
       icon={Lightbulb}
-      subtitle="Session 4"
-      title="Tips & Tricks (Phần 1)"
-      description="Những mẹo giúp làm việc với AI hiệu quả hơn."
+      subtitle="Phần 4"
+      title="Mẹo Hay"
     >
-      <BulletList items={[
+      <StepList steps={[
         {
-          icon: Target,
-          title: "Cung cấp context đầy đủ",
-          description: "Stack công nghệ, coding conventions, project constraints"
+          title: "Cho AI biết bối cảnh",
+          description: "Dự án gì, dùng công nghệ gì, có ràng buộc gì"
         },
         {
-          icon: RefreshCw,
-          title: "Phân chia task nhỏ",
-          description: "Thay vì 'build full feature', chia thành: design → implement → test"
+          title: "Chia nhỏ việc",
+          description: "Thay vì làm cả feature, chia ra: thiết kế → code → test"
         },
         {
-          icon: CheckCircle,
-          title: "Review và validate output",
-          description: "AI có thể hallucinate - luôn đọc kỹ và test code"
-        },
-        {
-          icon: Zap,
-          title: "Sử dụng few-shot examples",
-          description: "Cho AI xem ví dụ output mong muốn để kết quả chính xác hơn"
+          title: "Xem lại code AI viết",
+          description: "AI có thể sai, nhất là logic phức tạp"
         },
       ]} />
     </Slide>
@@ -47,31 +29,25 @@ export function TipsTricksSlide1() {
 export function TipsTricksSlide2() {
   return (
     <Slide
-      icon={Brain}
-      subtitle="Session 4.2"
-      title="Tips & Tricks (Phần 2)"
-      description="Thêm các mẹo nâng cao."
+      icon={AlertTriangle}
+      subtitle="Phần 4.2"
+      title="Lỗi Hay Gặp"
     >
       <BulletList items={[
         {
-          icon: RefreshCw,
-          title: "Iterative refinement",
-          description: "Prompt đầu tiên hiếm khi hoàn hảo - cải tiến dần dần"
+          icon: AlertTriangle,
+          title: "Prompt mơ hồ",
+          description: "\"Viết code\" → \"Viết API login bằng TypeScript\""
         },
         {
-          icon: Users,
-          title: "Kết hợp nhiều tools",
-          description: "Claude cho planning, Cursor cho coding, Copilot cho completions"
+          icon: AlertTriangle,
+          title: "Copy paste mù",
+          description: "Không đọc, không test, chạy luôn"
         },
         {
-          icon: FileText,
-          title: "Document your prompts",
-          description: "Lưu lại prompts hiệu quả để tái sử dụng sau này"
-        },
-        {
-          icon: Brain,
-          title: "Yêu cầu giải thích",
-          description: "Hỏi AI giải thích logic - giúp học và phát hiện bugs"
+          icon: AlertTriangle,
+          title: "Bỏ qua context",
+          description: "Không nói cho AI biết project đang dùng gì"
         },
       ]} />
     </Slide>
@@ -81,27 +57,22 @@ export function TipsTricksSlide2() {
 export function TipsTricksSlide3() {
   return (
     <Slide
-      icon={Zap}
-      subtitle="Session 4.3"
-      title="Pro Tips"
-      description="Tips từ những người dùng AI hàng ngày."
+      icon={Lightbulb}
+      subtitle="Phần 4.3"
+      title="Kỹ Thuật Nâng Cao"
     >
       <StepList steps={[
         {
-          title: "Start with 'why'",
-          description: "Giải thích mục đích task để AI hiểu big picture"
+          title: "Đóng vai",
+          description: "\"Bạn là senior developer Rust\" - AI trả lời chuyên sâu hơn"
         },
         {
-          title: "Specify constraints early",
-          description: "Performance requirements, compatibility, security concerns"
+          title: "Cho ví dụ",
+          description: "Show output mong muốn, AI hiểu format cần làm"
         },
         {
-          title: "Ask for alternatives",
-          description: "'Đưa ra 3 approaches với pros/cons của mỗi cách'"
-        },
-        {
-          title: "Use role-playing",
-          description: "'Bạn là senior architect' giúp AI respond phù hợp hơn"
+          title: "Hỏi nhiều cách",
+          description: "\"Cho 3 cách giải quyết, ưu nhược điểm mỗi cách\""
         },
       ]} />
     </Slide>

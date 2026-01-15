@@ -1,41 +1,30 @@
-import {
-  Bug,
-  Code,
-  FileText,
-  Rocket,
-  Users,
-  Zap
-} from 'lucide-react'
-import { BulletList, Quote, Slide, StatsGrid } from '../components/Slider'
+import { Code, Github, Rocket, Zap } from 'lucide-react'
+import { BulletList, Quote, Slide, StatsGrid, StepList } from '../components/Slider'
 
 export function RealWorldSlide1() {
   return (
     <Slide
       icon={Rocket}
-      subtitle="Session 7"
-      title="Ứng Dụng Thực Tế"
-      description="Những cách developer đang dùng AI hàng ngày."
+      subtitle="Phần 7"
+      title="Dự Án Thực Tế"
+      description="Các tool làm với AI (90% code từ AI):"
     >
-      <BulletList items={[
+      <StepList steps={[
         {
-          icon: Code,
-          title: "Code Generation",
-          description: "Boilerplate, CRUD operations, API endpoints, components"
+          title: "Lumi Tester",
+          description: "Test automation cho Android/iOS, viết test bằng YAML"
         },
         {
-          icon: Bug,
-          title: "Debugging",
-          description: "Phân tích error logs, suggest fixes, trace issues"
+          title: "Android Mirror",
+          description: "Mirror màn hình Android lên PC, low latency"
         },
         {
-          icon: FileText,
-          title: "Code Review",
-          description: "AI-assisted PR review, security scanning, best practices"
+          title: "Lunar Calendar",
+          description: "Flutter package đổi lịch dương sang âm"
         },
         {
-          icon: Zap,
-          title: "Refactoring",
-          description: "Modernize legacy code, improve performance, clean up"
+          title: "My Tool Kit",
+          description: "App Tauri: Tạo icon app, tối ưu dung lượng ảnh, ..."
         },
       ]} />
     </Slide>
@@ -45,22 +34,21 @@ export function RealWorldSlide1() {
 export function RealWorldSlide2() {
   return (
     <Slide
-      icon={Users}
-      subtitle="Session 7.2"
-      title="Kết Quả Thực Tế"
-      description="Số liệu từ các teams đã áp dụng AI."
+      icon={Github}
+      subtitle="Phần 7.2"
+      title="Hiệu Quả Thực Tế"
     >
       <StatsGrid stats={[
-        { value: "50%", label: "Faster Development" },
-        { value: "3x", label: "Performance Gain" },
-        { value: "40%", label: "Less Bugs" },
-        { value: "2x", label: "Code Coverage" },
+        { value: "90%", label: "Code từ AI" },
+        { value: "5x", label: "Nhanh hơn" },
+        { value: "70%", label: "Giảm debug" },
+        { value: "10+", label: "Dự án" },
       ]} />
 
       <Quote
-        text="AI đã thay đổi hoàn toàn cách team chúng tôi làm việc. Từ việc tốn 2 ngày setup project, giờ chỉ còn 2 giờ."
-        author="Senior Developer"
-        role="Tech Lead at Startup"
+        text="Developer biết dùng AI sẽ thay thế developer không biết."
+        author="Nghi Nguyen"
+        role="Software Developer"
       />
     </Slide>
   )
@@ -71,29 +59,23 @@ export function SummarySlide() {
     <Slide
       icon={Zap}
       subtitle="Tổng Kết"
-      title="Key Takeaways"
-      description="Những điểm quan trọng cần nhớ."
+      title="Điểm Chính"
     >
       <BulletList items={[
         {
           icon: Zap,
-          title: "Prompt là chìa khóa",
-          description: "Invest time vào việc viết prompts tốt"
+          title: "Prompt rõ ràng",
+          description: "Cho AI biết context, yêu cầu cụ thể"
         },
         {
           icon: Code,
-          title: "Chọn tool phù hợp",
-          description: "Không có one-size-fits-all, combine nhiều tools"
-        },
-        {
-          icon: Users,
-          title: "Review luôn cần thiết",
-          description: "AI assist, không replace human judgement"
+          title: "Dùng nhiều tool",
+          description: "ChatGPT học, Cursor code, Claude task phức tạp"
         },
         {
           icon: Rocket,
-          title: "Continuous learning",
-          description: "AI tools evolve nhanh - stay updated"
+          title: "Tận dụng Skills/Rules",
+          description: "Một lần setup, dùng mãi, share cho team"
         },
       ]} />
     </Slide>
@@ -104,9 +86,9 @@ export function ThankYouSlide() {
   return (
     <Slide
       icon={Rocket}
-      subtitle="Thank You for Listening!"
-      title="Thank You!"
-    >
-    </Slide>
+      subtitle="Cảm ơn!"
+      title="Hỏi Đáp"
+      description="github.com/Nghi-NV"
+    />
   )
 }

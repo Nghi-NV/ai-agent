@@ -120,8 +120,8 @@ export function ComparisonTable({ headers, rows }: ComparisonTableProps) {
               transition={{ delay: 0.5 + i * 0.1 }}
               className="border-t border-glass-border"
             >
-              <td className="p-2 sm:p-3 lg:p-4 text-error text-xs sm:text-sm lg:text-base">{row[0]}</td>
-              <td className="p-2 sm:p-3 lg:p-4 text-success text-xs sm:text-sm lg:text-base">{row[1]}</td>
+              <td className="p-2 sm:p-3 lg:p-4 text-white/80 text-xs sm:text-sm lg:text-base">{row[0]}</td>
+              <td className="p-2 sm:p-3 lg:p-4 text-accent text-xs sm:text-sm lg:text-base">{row[1]}</td>
             </motion.tr>
           ))}
         </tbody>

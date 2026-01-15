@@ -1,21 +1,20 @@
-import { Slide, ComparisonTable, CodeBlock, BulletList } from '../components/Slider'
-import { MessageSquare, AlertTriangle, CheckCircle, XCircle } from 'lucide-react'
+import { CheckCircle, MessageSquare, Zap } from 'lucide-react'
+import { CodeBlock, ComparisonTable, Slide } from '../components/Slider'
 
 export function PromptEngineeringSlide() {
   return (
     <Slide
       icon={MessageSquare}
-      subtitle="Session 1"
-      title="Prompt Engineering"
-      description="Kỹ thuật viết prompt để đạt kết quả tốt nhất từ AI."
+      subtitle="Phần 1"
+      title="Viết Prompt Hiệu Quả"
+      description="Prompt càng rõ ràng, kết quả càng chính xác."
     >
       <ComparisonTable
-        headers={["❌ KHÔNG NÊN", "✅ NÊN"]}
+        headers={["Prompt chung chung", "Prompt rõ ràng"]}
         rows={[
-          ["Review code này", "Bạn là senior React dev. Review component này về: 1) Performance 2) Best practices 3) Accessibility"],
-          ["Viết unit test", "Viết unit test cho function calculateTotal() bao gồm edge cases: số âm, số 0, array rỗng"],
-          ["Fix bug", "Debug error 'Cannot read property X of undefined' ở line 42. Context: User login sau 5 phút bị logout"],
-          ["Tạo API", "Thiết kế REST API CRUD cho User entity theo chuẩn OpenAPI 3.0 với authentication JWT"],
+          ["Viết code cho tôi", "Viết API đăng nhập bằng TypeScript, dùng JWT"],
+          ["Sửa lỗi này", "Lỗi null pointer ở dòng 42, xảy ra khi user chưa login"],
+          ["Tạo giao diện", "Tạo form đăng ký với validation, dùng React Hook Form"],
         ]}
       />
     </Slide>
@@ -25,34 +24,24 @@ export function PromptEngineeringSlide() {
 export function PromptMistakesSlide() {
   return (
     <Slide
-      icon={AlertTriangle}
-      subtitle="Session 1.2"
-      title="Sai Lầm Thường Gặp"
-      description="Những lỗi phổ biến khi sử dụng AI và cách tránh."
-      align="left"
+      icon={Zap}
+      subtitle="Phần 1.2"
+      title="Mẫu Prompt Hay Dùng"
     >
-      <BulletList items={[
-        {
-          icon: XCircle,
-          title: "Prompt quá chung chung",
-          description: "AI không có đủ context → Kết quả generic, không phù hợp với dự án"
-        },
-        {
-          icon: XCircle,
-          title: "Copy-paste không review",
-          description: "AI có thể hallucinate hoặc tạo code có bugs → Luôn đọc kỹ và test"
-        },
-        {
-          icon: XCircle,
-          title: "Không iterate",
-          description: "Prompt đầu tiên hiếm khi hoàn hảo → Refine và cải tiến prompt"
-        },
-        {
-          icon: XCircle,
-          title: "Bỏ qua context quan trọng",
-          description: "Không cung cấp thông tin về stack, constraints, coding style"
-        },
-      ]} />
+      <CodeBlock
+        filename="prompt-template.txt"
+        code={`Bạn là developer có kinh nghiệm về [công nghệ].
+
+Dự án: [mô tả ngắn]
+Công nghệ: [framework, thư viện]
+
+Yêu cầu:
+[Mô tả chi tiết việc cần làm]
+
+Lưu ý:
+- [Ràng buộc 1]
+- [Ràng buộc 2]`}
+      />
     </Slide>
   )
 }
@@ -61,29 +50,24 @@ export function PromptBestPracticesSlide() {
   return (
     <Slide
       icon={CheckCircle}
-      subtitle="Session 1.3"
-      title="Best Practices"
-      description="Các kỹ thuật prompt engineering nâng cao."
-      align="left"
+      subtitle="Phần 1.3"
+      title="Ví Dụ Thực Tế"
+      description="Prompt dùng khi làm Android Mirror:"
     >
       <CodeBlock
-        filename="good-prompt-example.txt"
-        code={`Bạn là senior TypeScript developer với 10 năm kinh nghiệm.
+        filename="ví dụ thực tế"
+        code={`Bạn là developer Rust, biết về async và video encoding.
 
-CONTEXT:
-- Dự án: E-commerce app dùng Next.js 14 + Prisma + PostgreSQL
-- Coding style: Functional programming, prefer composition
-- Testing: Jest + React Testing Library
+Dự án: Android Mirror - mirror màn hình Android lên PC
+Công nghệ: Rust, Tokio, ffmpeg
 
-TASK:
-Refactor function processOrder() để:
-1. Tách thành smaller functions (max 20 lines mỗi function)
-2. Thêm proper error handling với custom errors
-3. Thêm logging cho mỗi step quan trọng
+Yêu cầu:
+Thêm xử lý timeout khi không nhận được frame trong 5 giây.
+Retry 3 lần trước khi báo lỗi.
 
-OUTPUT FORMAT:
-- Code với comments giải thích logic
-- Unit tests cho edge cases`}
+Lưu ý:
+- Không block main thread
+- Log thống kê fps`}
       />
     </Slide>
   )

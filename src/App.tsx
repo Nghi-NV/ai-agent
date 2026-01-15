@@ -1,30 +1,32 @@
 import { Slider } from './components/Slider'
 import { Footer } from './components/ui'
 import {
-  HeroSlide,
-  PromptEngineeringSlide,
-  PromptMistakesSlide,
-  PromptBestPracticesSlide,
+  AIinDocumentationSlide,
+  AIinTestingSlide,
+  AIToolsComparisonSlide,
   AIToolsSlide,
   AIToolsSlide2,
-  AIToolsComparisonSlide,
-  UsingAIEffectivelySlide,
-  SkillsRulesWorkflowSlide,
+  BMADMethodSlide,
+  BMADvsSpecKitSlide,
   ChoosingModeSlide,
+  DevProcessSlide,
+  HeroSlide,
+  PlanningModeSlide,
+  PromptBestPracticesSlide,
+  PromptEngineeringSlide,
+  PromptMistakesSlide,
+  RealWorldSlide1,
+  RealWorldSlide2,
+  SkillsRulesWorkflowSlide,
+  SpecKitSlide,
+  SpecKitWorkflowSlide,
+  SummarySlide,
+  TeamSkillsSlide,
+  ThankYouSlide,
   TipsTricksSlide1,
   TipsTricksSlide2,
   TipsTricksSlide3,
-  BMADMethodSlide,
-  SpecKitSlide,
-  SpecKitWorkflowSlide,
-  BMADvsSpecKitSlide,
-  DevProcessSlide,
-  AIinTestingSlide,
-  AIinDocumentationSlide,
-  RealWorldSlide1,
-  RealWorldSlide2,
-  SummarySlide,
-  ThankYouSlide
+  UsingAIEffectivelySlide
 } from './slides'
 
 function App() {
@@ -60,6 +62,8 @@ function App() {
           <SpecKitSlide />
           <SpecKitWorkflowSlide />
           <BMADvsSpecKitSlide />
+          <PlanningModeSlide />
+          <TeamSkillsSlide />
 
           {/* Session 6: Dev Process with AI */}
           <DevProcessSlide />

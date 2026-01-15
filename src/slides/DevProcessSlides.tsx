@@ -1,42 +1,29 @@
-import { Slide, StepList, BulletList } from '../components/Slider'
-import {
-  Code,
-  Bug,
-  TestTube,
-  FileText,
-  Rocket,
-  Lightbulb,
-  CheckCircle
-} from 'lucide-react'
+import { Code, FileText, TestTube } from 'lucide-react'
+import { BulletList, Slide, StepList } from '../components/Slider'
 
 export function DevProcessSlide() {
   return (
     <Slide
       icon={Code}
-      subtitle="Session 6"
-      title="Dev Process với AI"
-      description="Áp dụng AI vào mỗi phase của software development."
+      subtitle="Phần 6"
+      title="AI Trong Quy Trình Dev"
     >
       <StepList steps={[
         {
-          title: "Requirements",
-          description: "AI giúp analyze requirements, tạo user stories, identify edge cases"
+          title: "Phân tích yêu cầu",
+          description: "AI giúp hiểu requirement, tìm edge case"
         },
         {
-          title: "Design",
-          description: "Generate architecture diagrams, API specs, data models"
+          title: "Thiết kế",
+          description: "Vẽ kiến trúc, API spec, data model"
         },
         {
-          title: "Implementation",
-          description: "Code generation, refactoring, debugging assistance"
+          title: "Code",
+          description: "AI code theo skill và rule đã định"
         },
         {
-          title: "Testing",
-          description: "Auto-generate test cases, test data, coverage reports"
-        },
-        {
-          title: "Documentation",
-          description: "Generate docs từ code, update READMEs, create guides"
+          title: "Test & Docs",
+          description: "Sinh test case, viết tài liệu"
         },
       ]} />
     </Slide>
@@ -47,30 +34,25 @@ export function AIinTestingSlide() {
   return (
     <Slide
       icon={TestTube}
-      subtitle="Session 6.2"
-      title="AI trong Testing & QA"
-      description="80% software teams sẽ dùng AI trong testing vào 2026."
+      subtitle="Phần 6.2"
+      title="Ví Dụ: Lumi Tester"
+      description="Tool test automation với AI:"
     >
       <BulletList items={[
         {
-          icon: Lightbulb,
-          title: "Autonomous Test Generation",
-          description: "AI phân tích app behavior và tự tạo test cases"
+          icon: TestTube,
+          title: "Test bằng YAML",
+          description: "Viết flow test dạng YAML, dễ đọc dễ sửa"
         },
         {
-          icon: CheckCircle,
-          title: "Self-Healing Tests",
-          description: "Tests tự điều chỉnh khi UI thay đổi, giảm 50% maintenance"
-        },
-        {
-          icon: Bug,
-          title: "Predictive Defect Analysis",
-          description: "Dự đoán bugs dựa trên code changes và history"
+          icon: Code,
+          title: "AI sinh test case",
+          description: "Mô tả flow app → AI tạo file test YAML"
         },
         {
           icon: FileText,
-          title: "Smart Test Data",
-          description: "Generate synthetic test data an toàn, compliant"
+          title: "AI phân tích lỗi",
+          description: "Paste log lỗi → AI chỉ nguyên nhân"
         },
       ]} />
     </Slide>
@@ -81,30 +63,24 @@ export function AIinDocumentationSlide() {
   return (
     <Slide
       icon={FileText}
-      subtitle="Session 6.3"
-      title="AI trong Documentation"
-      description="Tự động hóa việc viết và maintain documentation."
+      subtitle="Phần 6.3"
+      title="AI Viết Tài Liệu"
     >
       <BulletList items={[
         {
+          icon: FileText,
+          title: "README tự động",
+          description: "AI đọc code sinh README với hướng dẫn cài đặt"
+        },
+        {
           icon: Code,
-          title: "Code to Docs",
-          description: "Generate API docs, function descriptions từ source code"
+          title: "Commit message",
+          description: "Dùng skill git-commit, message chuẩn format"
         },
         {
           icon: FileText,
-          title: "README Generation",
-          description: "Tự động tạo và update README.md với usage examples"
-        },
-        {
-          icon: CheckCircle,
-          title: "Changelog Generation",
-          description: "Tạo changelogs từ git commits và PR descriptions"
-        },
-        {
-          icon: Rocket,
-          title: "User Guides",
-          description: "Generate user-facing documentation và tutorials"
+          title: "Changelog",
+          description: "Sinh changelog từ commit history"
         },
       ]} />
     </Slide>

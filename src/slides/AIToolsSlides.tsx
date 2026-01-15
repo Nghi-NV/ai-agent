@@ -1,46 +1,49 @@
-import { Slide, ToolGrid, StatsGrid } from '../components/Slider'
-import {
-  Wrench,
-  Code2,
-  Brain,
-  Sparkles,
-  Zap,
-  MessageSquare,
-  Bot
-} from 'lucide-react'
+import { Brain, MessageSquare, Monitor, Palette, Sparkles, Wrench } from 'lucide-react'
+import { ComparisonTable, Slide, StepList, ToolGrid } from '../components/Slider'
 
 export function AIToolsSlide() {
   return (
     <Slide
       icon={Wrench}
-      subtitle="Session 2"
-      title="AI Tools Overview"
-      description="Các công cụ AI phổ biến và điểm mạnh của từng tool."
+      subtitle="Phần 2"
+      title="Các Công Cụ Đã Dùng"
     >
       <ToolGrid tools={[
         {
-          name: "Cursor",
-          icon: Code2,
-          description: "AI-first code editor, fork từ VS Code",
-          bestFor: "Multi-file refactoring, Composer mode"
+          name: "ChatGPT",
+          icon: MessageSquare,
+          description: "Hỏi đáp, tìm hiểu concept",
+          bestFor: "Câu hỏi nhanh, giải thích khái niệm"
         },
         {
-          name: "GitHub Copilot",
-          icon: Zap,
-          description: "Code completion tích hợp trong IDE",
-          bestFor: "Quick completions, pair programming"
-        },
-        {
-          name: "Claude Code",
+          name: "Claude",
           icon: Brain,
-          description: "Terminal-first với reasoning mạnh",
-          bestFor: "Architecture decisions, complex tasks"
+          description: "Suy luận tốt, context dài",
+          bestFor: "Code phức tạp, thiết kế kiến trúc"
         },
         {
           name: "Gemini",
           icon: Sparkles,
-          description: "1M token context window",
-          bestFor: "Large codebase analysis, refactoring"
+          description: "Context 1 triệu token, tạo ảnh",
+          bestFor: "Phân tích codebase lớn"
+        },
+        {
+          name: "Google AI Studio",
+          icon: Palette,
+          description: "Tạo website nhanh",
+          bestFor: "Landing page, prototype"
+        },
+        {
+          name: "Stick Design AI",
+          icon: Palette,
+          description: "Thiết kế UI/UX từ prompt",
+          bestFor: "Mockup, wireframe, giao diện"
+        },
+        {
+          name: "Grok",
+          icon: Sparkles,
+          description: "Thông tin realtime, không kiểm duyệt",
+          bestFor: "Tin tức mới, câu hỏi gây tranh cãi"
         },
       ]} />
     </Slide>
@@ -50,35 +53,23 @@ export function AIToolsSlide() {
 export function AIToolsSlide2() {
   return (
     <Slide
-      icon={Bot}
-      subtitle="Session 2.2"
-      title="More AI Tools"
-      description="Thêm các công cụ AI hữu ích khác."
+      icon={Monitor}
+      subtitle="Phần 2.2"
+      title="Hành Trình Chọn IDE"
+      description="Từ VS Code đến Antigravity:"
     >
-      <ToolGrid tools={[
+      <StepList steps={[
         {
-          name: "ChatGPT",
-          icon: MessageSquare,
-          description: "General purpose, có plugins",
-          bestFor: "Research, brainstorming, learning"
+          title: "VS Code + GitHub Copilot",
+          description: "Bắt đầu với AI: gợi ý code, chat sidebar"
         },
         {
-          name: "Google AI Studio",
-          icon: Sparkles,
-          description: "Prompt testing và experimentation",
-          bestFor: "Testing prompts, fine-tuning"
+          title: "Cursor IDE",
+          description: "Chuyển sang vì Composer mode mạnh, sửa nhiều file cùng lúc"
         },
         {
-          name: "Antigravity",
-          icon: Brain,
-          description: "Advanced agentic coding assistant",
-          bestFor: "Complex projects, deep context"
-        },
-        {
-          name: "Grok",
-          icon: Zap,
-          description: "Real-time info, Twitter integration",
-          bestFor: "Current events, quick answers"
+          title: "Antigravity",
+          description: "Hiện đang dùng: Skills, Rules, Workflows, tự động hóa browser"
         },
       ]} />
     </Slide>
@@ -89,16 +80,20 @@ export function AIToolsComparisonSlide() {
   return (
     <Slide
       icon={Wrench}
-      subtitle="Session 2.3"
-      title="Khi Nào Dùng Tool Nào?"
-      description="Chọn công cụ phù hợp với từng task."
+      subtitle="Phần 2.3"
+      title="Chọn Tool Theo Việc"
     >
-      <StatsGrid stats={[
-        { value: "Cursor", label: "IDE tích hợp AI" },
-        { value: "Claude", label: "Complex reasoning" },
-        { value: "Gemini", label: "Large context" },
-        { value: "Copilot", label: "Quick completions" },
-      ]} />
+      <ComparisonTable
+        headers={["Việc cần làm", "Tool phù hợp"]}
+        rows={[
+          ["Hỏi nhanh, học concept", "ChatGPT, Gemini"],
+          ["Gợi ý code trong IDE", "Copilot, Cursor"],
+          ["Sửa nhiều file, task phức tạp", "Antigravity, Cursor Composer"],
+          ["Phân tích codebase lớn", "Gemini, Claude"],
+          ["Tạo landing page", "Google AI Studio"],
+          ["Thiết kế UI/UX", "Stick Design AI"],
+        ]}
+      />
     </Slide>
   )
 }

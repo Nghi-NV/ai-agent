@@ -1,42 +1,26 @@
-import { Slide, BulletList, StepList, ComparisonTable } from '../components/Slider'
-import {
-  Settings,
-  Lightbulb,
-  Workflow,
-  Brain,
-  Zap,
-  FileCode,
-  BookOpen
-} from 'lucide-react'
+import { FolderTree, Workflow } from 'lucide-react'
+import { CodeBlock, Slide, StepList } from '../components/Slider'
 
 export function UsingAIEffectivelySlide() {
   return (
     <Slide
-      icon={Settings}
-      subtitle="Session 3"
-      title="Sử Dụng AI Hiệu Quả"
-      description="Cách chọn LLM và configure để đạt kết quả tốt nhất."
+      icon={Workflow}
+      subtitle="Phần 3"
+      title="Skills, Rules, Workflows"
+      description="Tính năng mới giúp AI hiểu project của bạn:"
     >
-      <BulletList items={[
+      <StepList steps={[
         {
-          icon: Brain,
-          title: "Chọn LLM phù hợp",
-          description: "Claude cho reasoning phức tạp, Gemini cho context lớn, GPT cho đa năng"
+          title: "Skills",
+          description: "Hướng dẫn cho task lặp đi lặp lại: git commit, tạo component..."
         },
         {
-          icon: Zap,
-          title: "Planning vs Fast mode",
-          description: "Agentic mode cho tasks phức tạp, Chat mode cho quick questions"
+          title: "Rules",
+          description: "Quy tắc code: naming, patterns, kiến trúc project"
         },
         {
-          icon: FileCode,
-          title: "Cung cấp context",
-          description: "Đính kèm files liên quan, mô tả project structure"
-        },
-        {
-          icon: BookOpen,
-          title: "Iterative approach",
-          description: "Bắt đầu nhỏ, refine dần, review mỗi step"
+          title: "Workflows",
+          description: "Quy trình làm việc: phát triển feature, sửa bug"
         },
       ]} />
     </Slide>
@@ -46,29 +30,23 @@ export function UsingAIEffectivelySlide() {
 export function SkillsRulesWorkflowSlide() {
   return (
     <Slide
-      icon={Workflow}
-      subtitle="Session 3.2"
-      title="Skills, Rules & Workflows"
-      description="Cấu hình AI Agent để làm việc hiệu quả hơn."
+      icon={FolderTree}
+      subtitle="Phần 3.2"
+      title="Cấu Trúc Thư Mục"
     >
-      <StepList steps={[
-        {
-          title: "Skills",
-          description: "Tạo các skill files (.agent/skills/) cho tasks lặp đi lặp lại như: setup project, deploy, testing"
-        },
-        {
-          title: "Rules",
-          description: "Định nghĩa coding standards, conventions, và constraints trong .agent/rules/"
-        },
-        {
-          title: "Workflows",
-          description: "Tạo workflows cho quy trình như: feature development, bug fixing, code review"
-        },
-        {
-          title: "Memory",
-          description: "Sử dụng task.md và implementation_plan.md để track progress và context"
-        },
-      ]} />
+      <CodeBlock
+        filename=".agent/"
+        code={`project/
+├── .agent/
+│   ├── skills/
+│   │   ├── git-commit/SKILL.md
+│   │   └── tauri-app/SKILL.md
+│   ├── rules/
+│   │   └── coding-style.md
+│   └── workflows/
+│       └── feature-dev.md
+└── src/...`}
+      />
     </Slide>
   )
 }
@@ -76,21 +54,25 @@ export function SkillsRulesWorkflowSlide() {
 export function ChoosingModeSlide() {
   return (
     <Slide
-      icon={Lightbulb}
-      subtitle="Session 3.3"
-      title="Planning vs Fast Mode"
-      description="Khi nào dùng Agentic mode, khi nào dùng Chat mode."
+      icon={Workflow}
+      subtitle="Phần 3.3"
+      title="Chat Mode vs Planning Mode"
+      description="Khi nào dùng mode nào:"
     >
-      <ComparisonTable
-        headers={["Chat Mode (Fast)", "Agentic Mode (Planning)"]}
-        rows={[
-          ["Quick questions", "Complex multi-step tasks"],
-          ["Code snippets", "Full feature implementation"],
-          ["Debugging hints", "Architecture decisions"],
-          ["Syntax help", "Refactoring across multiple files"],
-          ["Learning concepts", "Project setup & configuration"],
-        ]}
-      />
+      <StepList steps={[
+        {
+          title: "Chat Mode",
+          description: "Hỏi nhanh, sửa code nhỏ, giải thích khái niệm"
+        },
+        {
+          title: "Planning Mode",
+          description: "Task lớn, cần AI lên kế hoạch trước khi làm"
+        },
+        {
+          title: "Mẹo",
+          description: "Luôn đọc kế hoạch của AI trước khi cho chạy"
+        },
+      ]} />
     </Slide>
   )
 }

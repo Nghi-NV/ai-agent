@@ -1,24 +1,18 @@
-import { Slide, StepList, BulletList, CodeBlock } from '../components/Slider'
-import {
-  FileCode,
-  GitBranch,
-  Users,
-  CheckSquare,
-  FileText
-} from 'lucide-react'
+import { CheckSquare, FileCode, GitBranch, Users, Workflow } from 'lucide-react'
+import { BulletList, CodeBlock, Slide, StepList } from '../components/Slider'
 
 export function BMADMethodSlide() {
   return (
     <Slide
       icon={Users}
-      subtitle="Session 5"
+      subtitle="Phần 5"
       title="BMAD Method"
       description="Breakthrough Method for Agile AI-Driven Development"
     >
       <StepList steps={[
         {
           title: "Analyst Agent",
-          description: "Phân tích yêu cầu, tạo user stories"
+          description: "Phân tích yêu cầu, viết user stories, xác định scope"
         },
         {
           title: "PM Agent",
@@ -26,15 +20,15 @@ export function BMADMethodSlide() {
         },
         {
           title: "Architect Agent",
-          description: "Thiết kế system architecture, data models"
+          description: "Thiết kế kiến trúc, data models, API specs"
         },
         {
           title: "Dev Agent",
-          description: "Implement theo specs đã được approved"
+          description: "Code theo specs đã duyệt"
         },
         {
           title: "QA Agent",
-          description: "Testing và validation"
+          description: "Test và validation"
         },
       ]} />
     </Slide>
@@ -45,18 +39,18 @@ export function SpecKitSlide() {
   return (
     <Slide
       icon={FileCode}
-      subtitle="Session 5.2"
+      subtitle="Phần 5.2"
       title="GitHub Spec Kit"
-      description="Spec-driven development cho AI coding assistants."
+      description="Spec-driven development cho AI coding:"
     >
       <CodeBlock
-        filename="project-structure"
+        filename="cấu trúc thư mục"
         code={`project/
-├── spec.md        # High-level goals & requirements
-├── plan.md        # Technical approach & architecture
-├── constitution.md # Project principles & guidelines
+├── spec.md          # Mục tiêu & yêu cầu chung
+├── plan.md          # Cách tiếp cận & kiến trúc
+├── constitution.md  # Nguyên tắc & quy ước
 └── tasks/
-    ├── task-001.md  # Specific work units
+    ├── task-001.md  # Việc cụ thể
     ├── task-002.md
     └── ...`}
       />
@@ -68,26 +62,25 @@ export function SpecKitWorkflowSlide() {
   return (
     <Slide
       icon={GitBranch}
-      subtitle="Session 5.3"
-      title="Spec Kit Workflow"
-      description="4 phases để làm việc với AI agents."
+      subtitle="Phần 5.3"
+      title="Quy Trình Spec Kit"
     >
       <StepList steps={[
         {
           title: "1. Specify",
-          description: "Mô tả high-level goal và requirements trong spec.md"
+          description: "Viết spec.md - mô tả mục tiêu và yêu cầu"
         },
         {
           title: "2. Refine",
-          description: "Review và clarify requirements với AI"
+          description: "Làm rõ yêu cầu với AI, bổ sung chi tiết"
         },
         {
           title: "3. Plan",
-          description: "Tạo technical plan và architecture trong plan.md"
+          description: "Tạo plan.md - kiến trúc và cách tiếp cận"
         },
         {
           title: "4. Task",
-          description: "Chia nhỏ thành tasks cụ thể để AI execute"
+          description: "Chia nhỏ thành tasks/ để AI thực hiện"
         },
       ]} />
     </Slide>
@@ -98,25 +91,82 @@ export function BMADvsSpecKitSlide() {
   return (
     <Slide
       icon={CheckSquare}
-      subtitle="Session 5.4"
-      title="BMAD vs Spec Kit"
-      description="Khi nào dùng framework nào?"
+      subtitle="Phần 5.4"
+      title="Khi Nào Dùng?"
     >
       <BulletList items={[
         {
           icon: Users,
           title: "BMAD Method",
-          description: "Projects lớn, enterprise, cần governance và traceability. Simulates full agile team."
+          description: "Dự án lớn, cần agents chuyên biệt, quy trình chặt chẽ"
         },
         {
-          icon: FileText,
+          icon: FileCode,
           title: "Spec Kit",
-          description: "Small-medium projects, flexible. Adds structure to existing AI workflows."
+          description: "Dự án vừa-nhỏ, linh hoạt, dễ bắt đầu"
         },
         {
           icon: GitBranch,
-          title: "Kết hợp cả hai",
-          description: "Dùng BMAD's Architect cho detailed design, Spec Kit cho everyday coding tasks."
+          title: "Kết hợp",
+          description: "Dùng BMAD cho planning, Spec Kit cho daily coding"
+        },
+      ]} />
+    </Slide>
+  )
+}
+
+export function PlanningModeSlide() {
+  return (
+    <Slide
+      icon={Workflow}
+      subtitle="Phần 5.5"
+      title="Planning Mode Trong IDE"
+      description="Antigravity/Cursor áp dụng tương tự:"
+    >
+      <StepList steps={[
+        {
+          title: "Bước 1: AI lên kế hoạch",
+          description: "Đọc code, hiểu yêu cầu, viết implementation_plan.md"
+        },
+        {
+          title: "Bước 2: Duyệt kế hoạch",
+          description: "Đọc kỹ, đồng ý hoặc yêu cầu sửa"
+        },
+        {
+          title: "Bước 3: AI thực hiện",
+          description: "Code theo kế hoạch đã duyệt"
+        },
+        {
+          title: "Bước 4: Kiểm tra",
+          description: "AI test, viết walkthrough.md"
+        },
+      ]} />
+    </Slide>
+  )
+}
+
+export function TeamSkillsSlide() {
+  return (
+    <Slide
+      icon={Users}
+      subtitle="Phần 5.6"
+      title="Chia Sẻ Skills Cho Team"
+    >
+      <BulletList items={[
+        {
+          icon: FileCode,
+          title: "git-commit",
+          description: "Viết commit message chuẩn Conventional Commits"
+        },
+        {
+          icon: FileCode,
+          title: "code-review",
+          description: "Review code theo checklist của team"
+        },
+        {
+          icon: FileCode,
+          title: "create-component",
+          description: "Tạo component/module theo template dự án"
         },
       ]} />
     </Slide>
