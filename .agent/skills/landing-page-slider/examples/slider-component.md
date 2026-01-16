@@ -1,26 +1,8 @@
-# Slider Component
-
-Main container that manages presentation mode, slide navigation, and animations.
-
-## Props Interface
-
-```typescript
-interface SliderProps {
-  children: ReactNode[]    // Array of Slide components
-  className?: string       // Additional CSS classes
-  autoPlay?: boolean       // Auto-advance slides (default: false)
-  autoPlayInterval?: number // Interval in ms (default: 5000)
-}
-```
-
-## Complete Implementation
-
 ```tsx
-import { useState, useEffect, useCallback, ReactNode } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Presentation, X, Maximize } from 'lucide-react'
-import { useKeyboard } from '../hooks/useKeyboard'
-import { useFullscreen } from '../hooks/useFullscreen'
+import { AnimatePresence, motion } from 'framer-motion'
+import { Play } from 'lucide-react'
+import { ReactNode, useCallback, useEffect, useState } from 'react'
+import { useKeyboard } from '../../hooks'
 
 interface SliderProps {
   children: ReactNode[]
@@ -29,16 +11,15 @@ interface SliderProps {
   autoPlayInterval?: number
 }
 
-export function Slider({ 
-  children, 
+export function Slider({
+  children,
   className = '',
   autoPlay = false,
-  autoPlayInterval = 5000 
+  autoPlayInterval = 5000
 }: SliderProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
   const [isPresenting, setIsPresenting] = useState(false)
-  const { isFullscreen, toggleFullscreen } = useFullscreen()
-  
+
   const totalSlides = children.length
 
   const nextSlide = useCallback(() => {
@@ -57,6 +38,11 @@ export function Slider({
     setIsPresenting(prev => !prev)
   }, [])
 
+  const startPresentation = useCallback(() => {
+    setIsPresenting(true)
+    setCurrentSlide(0)
+  }, [])
+
   // Auto-play functionality
   useEffect(() => {
     if (!autoPlay || !isPresenting) return
@@ -69,18 +55,68 @@ export function Slider({
     onNext: nextSlide,
     onPrev: prevSlide,
     onEscape: exitPresentation,
-    onFullscreen: toggleFullscreen,
+    onFullscreen: () => { },
     onTogglePresentation: togglePresentation,
-    enabled: isPresenting,
+    isPresenting,
   })
 
-  // Presentation mode styles
-  const presentationClasses = isPresenting
-    ? 'fixed inset-0 z-50 bg-black'
-    : ''
+  // ========== LANDING PAGE MODE ==========
+  if (!isPresenting) {
+    return (
+      <div className={`relative ${className} overflow-x-hidden overflow-y-auto`}>
+        {/* Background gradient orbs */}
+        <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none">
+          <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/30 rounded-full blur-3xl" />
+          <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-secondary/30 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-accent/20 rounded-full blur-3xl" />
+        </div>
 
+        {/* Landing Content */}
+        <div className="w-full min-h-screen py-20 px-4 sm:px-6 lg:px-8 flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center max-w-4xl w-full mx-auto"
+          >
+            {/* Hero content here */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex justify-center"
+            >
+              <button
+                onClick={startPresentation}
+                className="px-8 py-4 bg-primary hover:bg-primary-light text-white font-semibold 
+                           rounded-xl glow transition-all duration-300 flex items-center gap-3
+                           text-lg cursor-pointer hover:scale-105"
+              >
+                <Play className="w-5 h-5" />
+                Start
+              </button>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* All Slides Content - Scrollable */}
+        <div className="w-full">
+          {children.map((child, index) => (
+            <section
+              key={index}
+              className="min-h-screen w-full py-8 transform-gpu"
+            >
+              {child}
+            </section>
+          ))}
+        </div>
+      </div>
+    )
+  }
+
+  // ========== PRESENTATION MODE ==========
   return (
-    <div className={`relative ${presentationClasses} ${className}`}>
+    <div className={`fixed inset-0 z-50 bg-bg-base ${className}`}>
       {/* Background gradient orbs */}
       <div className="absolute inset-0 overflow-hidden -z-10">
         <motion.div
@@ -96,7 +132,7 @@ export function Slider({
       </div>
 
       {/* Slides */}
-      <div className="relative h-full flex items-center justify-center">
+      <div className="relative h-full flex items-center justify-center overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -110,92 +146,7 @@ export function Slider({
           </motion.div>
         </AnimatePresence>
       </div>
-
-      {/* Navigation Controls */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-4">
-        <button
-          onClick={prevSlide}
-          className="p-3 rounded-full bg-glass-bg backdrop-blur-md border border-glass-border
-                     hover:bg-white/20 transition-colors"
-          aria-label="Previous slide"
-        >
-          <ChevronLeft className="w-5 h-5" />
-        </button>
-
-        {/* Progress Dots */}
-        <div className="flex gap-2">
-          {children.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentSlide(index)}
-              className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                index === currentSlide ? 'bg-primary w-6' : 'bg-white/30 hover:bg-white/50'
-              }`}
-              aria-label={`Go to slide ${index + 1}`}
-            />
-          ))}
-        </div>
-
-        <button
-          onClick={nextSlide}
-          className="p-3 rounded-full bg-glass-bg backdrop-blur-md border border-glass-border
-                     hover:bg-white/20 transition-colors"
-          aria-label="Next slide"
-        >
-          <ChevronRight className="w-5 h-5" />
-        </button>
-      </div>
-
-      {/* Top Controls */}
-      <div className="absolute top-4 right-4 flex items-center gap-2">
-        <button
-          onClick={toggleFullscreen}
-          className="p-2 rounded-lg bg-glass-bg backdrop-blur-md border border-glass-border
-                     hover:bg-white/20 transition-colors"
-          aria-label="Toggle fullscreen"
-        >
-          <Maximize className="w-4 h-4" />
-        </button>
-
-        <button
-          onClick={togglePresentation}
-          className="p-2 rounded-lg bg-glass-bg backdrop-blur-md border border-glass-border
-                     hover:bg-white/20 transition-colors"
-          aria-label={isPresenting ? 'Exit presentation' : 'Start presentation'}
-        >
-          {isPresenting ? <X className="w-4 h-4" /> : <Presentation className="w-4 h-4" />}
-        </button>
-      </div>
-
-      {/* Keyboard Shortcuts Hint */}
-      {isPresenting && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="absolute bottom-4 right-4 text-xs text-white/40"
-        >
-          Press <kbd className="px-1 py-0.5 bg-white/10 rounded">Esc</kbd> to exit
-        </motion.div>
-      )}
-
-      {/* Slide Counter */}
-      <div className="absolute top-4 left-4 text-sm text-white/50">
-        {currentSlide + 1} / {totalSlides}
-      </div>
     </div>
   )
 }
-```
-
-## Usage Example
-
-```tsx
-<Slider autoPlay autoPlayInterval={8000}>
-  <Slide title="Welcome" subtitle="Introduction" />
-  <Slide title="Features" icon={Sparkles} />
-  <Slide title="Demo" align="left">
-    <CodeBlock code="npm install..." />
-  </Slide>
-</Slider>
 ```

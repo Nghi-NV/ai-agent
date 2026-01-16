@@ -1,18 +1,6 @@
-# Theme CSS
-
-Complete Tailwind CSS v4 theme for landing page slider with glassmorphism and animations.
-
-## Theme Configuration
-
 ```css
 /**
- * Tailwind CSS v4 Theme for Landing Page Slider
- * 
- * Features:
- * - oklch colors for P3 display support
- * - Glassmorphism utilities
- * - Animation keyframes
- * - Dark mode optimized
+ * Tailwind CSS v4 Theme
  */
 
 @import "tailwindcss";
@@ -57,13 +45,11 @@ Complete Tailwind CSS v4 theme for landing page slider with glassmorphism and an
   --color-text-muted: oklch(0.65 0 0);
   
   /* ===== Typography ===== */
-  
   --font-display: "Inter", "SF Pro Display", system-ui, sans-serif;
   --font-body: "Inter", "SF Pro Text", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "SF Mono", monospace;
   
   /* ===== Animations ===== */
-  
   --animate-slide-in-right: slide-in-right 0.5s ease-out;
   --animate-slide-in-left: slide-in-left 0.5s ease-out;
   --animate-fade-up: fade-up 0.6s ease-out;
@@ -73,18 +59,13 @@ Complete Tailwind CSS v4 theme for landing page slider with glassmorphism and an
   --animate-float: float 6s ease-in-out infinite;
   
   /* ===== Shadows ===== */
-  
   --shadow-glass: 0 8px 32px oklch(0 0 0 / 0.3);
   --shadow-glow: 0 0 30px oklch(0.65 0.18 250 / 0.3);
   --shadow-glow-strong: 0 0 60px oklch(0.65 0.18 250 / 0.5);
 }
-```
 
----
+/* ===== Keyframe Animations ===== */
 
-## Keyframe Animations
-
-```css
 @keyframes slide-in-right {
   from { transform: translateX(100%); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
@@ -119,13 +100,9 @@ Complete Tailwind CSS v4 theme for landing page slider with glassmorphism and an
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-20px); }
 }
-```
 
----
+/* ===== Base Styles ===== */
 
-## Base Styles
-
-```css
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
@@ -136,16 +113,11 @@ body {
   background-color: var(--color-bg-base);
   color: var(--color-text-primary);
   font-family: var(--font-body);
+  min-height: 100vh;
 }
-```
 
----
+/* ===== Utility Classes ===== */
 
-## Utility Classes
-
-### Glassmorphism Card
-
-```css
 .glass-card {
   background: var(--color-glass-bg);
   backdrop-filter: blur(24px);
@@ -159,22 +131,14 @@ body {
   background: var(--color-glass-bg-hover);
   border-color: var(--color-glass-border-hover);
 }
-```
 
-### Gradient Text
-
-```css
 .gradient-text {
   background: linear-gradient(135deg, var(--color-primary-light), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-```
 
-### Glow Effect
-
-```css
 .glow {
   box-shadow: var(--shadow-glow);
   transition: box-shadow 0.3s ease;
@@ -183,14 +147,9 @@ body {
 .glow:hover {
   box-shadow: var(--shadow-glow-strong);
 }
-```
 
----
+/* ===== Accessibility ===== */
 
-## Accessibility
-
-```css
-/* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -201,9 +160,38 @@ body {
   }
 }
 
-/* Focus Visible */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 2px;
+}
+
+/* ===== Scrollbar Styling ===== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-surface);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-glass-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-glass-border-hover);
+}
+
+/* ===== Code Block Styling ===== */
+
+pre {
+  font-family: var(--font-mono);
+}
+
+code {
+  font-family: var(--font-mono);
 }
 ```
