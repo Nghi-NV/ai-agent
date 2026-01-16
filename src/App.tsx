@@ -15,6 +15,7 @@ import {
   PromptBestPracticesSlide,
   PromptEngineeringSlide,
   PromptMistakesSlide,
+  ProjectShowcaseSlide,
   RealWorldSlide1,
   RealWorldSlide2,
   SkillsRulesWorkflowSlide,
@@ -73,6 +74,7 @@ function App() {
           {/* Session 7: Real World Applications */}
           <RealWorldSlide1 />
           <RealWorldSlide2 />
+          <ProjectShowcaseSlide />
 
           {/* Summary & Thank You */}
           <SummarySlide />
